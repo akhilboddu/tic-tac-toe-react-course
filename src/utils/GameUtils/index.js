@@ -40,7 +40,6 @@ export const checkForWinner = (board) => {
 
   // check if the game has drawn
   // the game is over or there is no winner
-  console.log(board);
   if(!board.includes(null)) {
     return "draw"
   }
