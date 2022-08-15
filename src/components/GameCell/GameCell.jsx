@@ -12,7 +12,7 @@ import { SfxContext } from "../../contexts/SfxContext";
 
 function GameCell({ cellItem, index, isWinningCell }) {
   const { updateBoard, game, roundComplete } = useContext(GameContext);
-  const { hoverSfx, clickSfx, winSfx, completedSfx } = useContext(SfxContext);
+  const { hoverSfx, clickSfx, winSfx } = useContext(SfxContext);
   const { handleModal } = useContext(ModalContext);
 
   const cellClickHandler = () => {
