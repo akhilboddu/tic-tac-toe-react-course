@@ -13,7 +13,7 @@ export const checkForWinner = (board) => {
   for (let i = 0; i < 9; i += 3) {
     if (checkForSequence(board[i], board[i + 1], board[i + 2])) {
       console.log("ROW Winner");
-      return true;
+      return [i, i + 1, i + 2];
     }
   }
 
@@ -21,20 +21,20 @@ export const checkForWinner = (board) => {
   for (let i = 0; i < 3; i += 1) {
     if (checkForSequence(board[i], board[i + 3], board[i + 6])) {
       console.log("COLUMN Winner");
-      return true;
+      return [i, i + 3, i + 6];
     }
   }
 
   // diagnol 1
   if (checkForSequence(board[0], board[4], board[8])) {
     console.log("DIAGNOL winner");
-    return true;
+    return [0, 4, 8];
   }
 
   // diagnol 2
   if (checkForSequence(board[2], board[4], board[6])) {
     console.log("DIAGNOL winner");
-    return true;
+    return [2, 4, 6];
   }
 
 
