@@ -14,7 +14,6 @@ function MusicPlayer() {
   const playerRef = useRef(null);
 
   useEffect(() => {
-    console.log("ISPLAYING", isPlaying);
     if (isPlaying) {
       const promise = playerRef.current?.play();
       setPlayPromise(promise);
@@ -22,27 +21,20 @@ function MusicPlayer() {
       return;
     }
     playerRef.current?.pause();
-  }, [isPlaying]);
-
-  const nextSong = () => {
-    setCurrentSong(randomizeIndex(playList));
-    const promise = playerRef.current?.play();
-    setPlayPromise(promise);
-    if (playerRef.current?.volume) playerRef.current.volume = 0.1;
-    setIsPlaying(true);
-  };
+  }, [isPlaying, currentSong]);
 
   const shuffleHandler = async () => {
+ 
     await playPromise?.then(() => {
       playerRef.current?.pause();
       setIsPlaying(false);
     });
 
-    nextSong();
+    setCurrentSong(randomizeIndex(playList));
+    setIsPlaying(true);
   };
 
-  const displaySong =
-    playList[currentSong].split("/")[6] || playList[currentSong];
+  const displaySong = playList[currentSong].split("/")[6] || playList[currentSong];
   return (
     <MusicPlayerWrapper>
       {isPlaying ? (
